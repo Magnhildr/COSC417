@@ -1,84 +1,179 @@
 
+
 \documentclass[12pt,letterpaper,final]{report}
+
 \usepackage[utf8]{inputenc}
+
 \usepackage{amsmath}
+
 \usepackage{amsfonts}
+
 \usepackage{amssymb}
+
 \usepackage{amsthm}
+
 \renewcommand\qedsymbol{$\blacksquare$}
+
 \usepackage{enumerate}
+
 \usepackage{hyperref}
 
+
+
 \usepackage{tikz}
+
 \usepackage{tikz-qtree}
+
 \usetikzlibrary{automata,arrows}
 
 
+
+
+
 \begin{document}
+
 \fbox{
+
 \vbox{
+
 \begin{flushleft}
+
 Thomas Adams, Zachary Kafka, Sujan Tulachan, Krysta Valenzia\\  % authors' names
+
 COSC 417  \\  %class
+
 2/11/2020\\  % date
+
 \end{flushleft}
+
 \center{\Large{\textbf{Assignment 1}}}
+
 %\end{mdframed}
+
 } % end vbox
+
 } % end fbox
 
 
+
+
+
 \bigskip
+
+
+
 
 
 \textbf{Problem 1.}
+
 \begin{itemize}
+
 \item [(a)]  No, A is not a subset of B because element z cannot be found in B.
+
 \item [(b)]  Yes, B is a subset of A because all elements in B can be found in A.
+
 \item[(c)]   A $\cup$ B = \{$x, y, z$\}
+
 \item[(d)]   A $\cap$ B = $\{x, y\}$
+
 \item[(e)]   A x B = $\{(x, x), (x, y), (y, x), (y, y), (z, x), (z, y)\}$
+
 \item[(f)]   $\wp(B)$ = \{ $\emptyset$, \{$x$\}, \{$y$\}, \{$x, y$\}\}
-\item[(g)]   $\wp(\wp(B))$ = \{ $\emptyset$, \{ $\emptyset$ \}, \{ \{ $x$ \} \}, \{ \{ $y$ \} \}, \{ \{ $x, y$ \} \}, \newline \{ \{ $\emptyset$ \}, \{ $x$ \} \}, \{ \{ $\emptyset$ \}, \{ $y$ \} \}, \{ \{ $\emptyset$ \}, \{ $x, y$ \} \},
-\newline \{ \{ $x$ \}, \{ $y$ \} \}, \{ \{ $x$ \}, \{ $x, y$ \} \}, \{ \{ $y$ \}, \{ $x, y$ \} \}, \newline 
-\{ \{ $\emptyset$ \}, \{ $x$ \} , \{ $y$ \} \}, \{ \{ $\emptyset$ \}, \{ $x$ \} , \{ $x, y$ \} \}, \newline
-\{ \{ $\emptyset$ \}, \{ $y$ \} , \{ $x, y$ \} \}, \{ \{ $x$ \}, \{ $y$ \} , \{ $x, y$ \} \}, \newline
-\{ \{ $\emptyset$ \}, \{ $x$ \} , \{ $y$ \}, \{ $x, y$ \} \} \}
+
+\item[(g)]   $\wp(\wp(B))$ = \newline
+\{\emptyset$,\newline\indent\indent\indent\indent   
+$\{ \emptyset\}$,\newline\indent\indent\indent\indent 
+$\{\{x\}\}$,\newline\indent\indent\indent\indent 
+$\{\{y\}\}$,\newline\indent\indent\indent\indent 
+$\{\{ x, y\}\}$,\newline\indent\indent\indent\indent
+$ \{  \emptyset , \{ x\}\}$,\newline\indent\indent\indent\indent
+$\{  \emptyset, \{ y\}\}$,\newline\indent\indent\indent\indent
+$ \{  \emptyset, \{ x, y\}\}$,\newline\indent\indent\indent\indent
+$ \{ \{x\}, \{ y\}\}$,\newline\indent\indent\indent\indent
+$ \{ \{x\}, \{x, y\}\}$,\newline\indent\indent\indent\indent
+$ \{ \{y\}, \{x, y\}\}$,\newline\indent\indent\indent\indent
+$\{ \emptyset, \{x\}, \{y\}\}$,\newline\indent\indent\indent\indent
+$ \{ \emptyset, \{x\}, \{x, y\}\}$,\newline\indent\indent\indent\indent
+$ \{ \emptyset, \{y\}, \{x, y\}\}$,\newline\indent\indent\indent\indent
+$ \{ \{x\}, \{y\}, \{x, y\}\}$,\newline\indent\indent\indent\indent
+$ \{ \emptyset,\{x\} \{y\}, \{x, y\}\}$\newline\indent\indent\indent\indent
+$\}$  $
  
+
 \end{itemize}
+
 \bigskip
+
+
 
 \textbf{Problem 2.}
+
 \begin{itemize}
+
 \item [] Set EVEN $=\{0,2,4, \ldots \}$ \newline
+
                           Set N $=\{0,1,2, \ldots \}$ \newline
+
                           
+
 \item [] A function $f: {\mathbb N} \rightarrow {\rm EVEN}$ that relates the two is $f(x) = 2x$. \newline
 
+
+
 \item [] Injective (1-to-1) proof for $f(x) = 2x$:
+
 \begin{itemize}
+
     \item [$->$] Let $a_1$ and $a_2 \in {\mathbb N}$
+
     \item [$->$] $f(a_1) = f(a_2)$
+
     \item [$->$] $2(a_1) = 2(a_2) --> a_1 = a_2$
+
     \item [$->$] Q.E.D.
+
 \end{itemize}
+
+
 
 \item [] Surjective (onto) proof: (a function $f: X --> Y$ is surjective if for all y's there is some x so that $f(x) = y$) for $f(x) = 2x$.
+
 \begin{itemize}
+
     %\item [$->$] Let $n = 2x$, $n \in$ EVEN
+
     %\item [$->$] Let $m \in$ N
+
     %\item [$->$] Looking at our equation: $f(x) = 2x$
+
     \item [$->$] $f(x) = 2x$
+
     \item [$->$] $f(x) = y$
+
     \item [$->$] $2x = y$
+
     \item [$->$] $x = y/2$
+
     \item [$->$] For any $x = y/2 \in {\mathbb N}$
+
     \item [$->$] $f(x) = f(y/2) = 2(y/2) = y$
+
     \item [$->$] Q.E.D.
+
 \end{itemize}
 
 
+
+
+
 \end{itemize}
+
+
+
+
+
+
+
 
 
 
@@ -86,18 +181,34 @@ COSC 417  \\  %class
 
 
 \bigskip
+
 \textbf{Problem 3.}
+
 \begin{itemize}
+
 \item[(a)] A x B = \{($1, a$), ($1, b$), ($2, a$), ($2, b$), ($3, a$), ($3, b$)\}
+
 \item[(b)] 1 element of $\wp(A)$  x  $ \wp(B) =$ (\{1\}, \{$a$\})
+
 \begin{itemize}
+
     \item[(1)] $\wp(A) = $\{$\emptyset$, \{1\}, \{2\}, \{3\}, \{1, 2\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\}\}
+
     \item[(2)] $\wp(B) = $\{$\emptyset$, \{$a$\}, \{$b$\}, \{$a, b$\}\}
+
 \end{itemize}
+
+
 
 \item[(c)] The size of $\wp(A)$ x $\wp(B)$ = $2^3 * 2^2 = 2^5 = 32$
 
+
+
 \end{itemize}
+
+
+
+
 
 
 
