@@ -1,0 +1,72 @@
+
+\documentclass[12pt,letterpaper,final]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\renewcommand\qedsymbol{$\blacksquare$}
+\usepackage{enumerate}
+\usepackage{hyperref}
+
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usetikzlibrary{automata,arrows}
+
+
+\begin{document}
+\fbox{
+\vbox{
+\begin{flushleft}
+Zachary Kafka, Krysta Valenzia, Thomas Adams\\  % authors' names
+COSC 417  \\  %class
+2/11/2020\\  % date
+\end{flushleft}
+\center{\Large{\textbf{Assignment 1}}}
+%\end{mdframed}
+} % end vbox
+} % end fbox
+
+
+\bigskip
+
+
+\textbf{Problem 1.}
+\begin{itemize}
+\item [(a)]  No, A is not a subset of B because element z cannot be found in B.
+\item [(b)]  Yes, B is a subset of A because all elements in B can be found in A.
+\item[(c)]   A $\cup$ B = \{$x, y, z$\}
+\item[(d)]   A $\cap$ B = $\{x, y\}$
+\item[(e)]   A x B = $\{ \{x, x\}, \{x, y\}, \{y, x\}, \{y, y\}, \{z, x\}, \{z, y\}\}$
+\item[(f)]   $\wp(B)$ = \{ $\emptyset$, \{$x$\}, \{$y$\}, \{$x, y$\}\}
+\item[(g)]   $\wp(\wp(B))$ = \{ \{ \}, \{ \{ \} \}, \{ \{ $x$ \} \} \}
+ 
+\end{itemize}
+\bigskip
+
+\textbf{Problem 2.}
+\begin{itemize}
+\item [] Set EVEN $=\{0,2,4, \ldots \}$ \newline
+                          Set N $=\{0,1,2, \ldots \}$ \newline
+                          
+\item [] A function $f: {\mathbb N} \rightarrow {\rm EVEN}$ that relates the two is $f(x) = 2x$
+\end{itemize}
+
+
+
+
+
+
+\bigskip
+\textbf{Problem 3.}
+\begin{itemize}
+\item[(a)] A x B = \{ \{ $1, a$ \}, \{ $1, b$ \}, \{ $2, a$ \}, \{ $2, b$ \}, \{ $3, a$ \}, \{ $3, b$ \} \}
+\item[(b)] $O(n)$
+
+\item[(c)] The size of $\wp(A)$ x $\wp(B)$ = $2^3 * 2^2 = 2^5 = 32$
+
+\end{itemize}
+
+
+
+\end{document}
