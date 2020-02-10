@@ -39,7 +39,11 @@ COSC 417  \\  %class
 \item[(d)]   A $\cap$ B = $\{x, y\}$
 \item[(e)]   A x B = $\{ \{x, x\}, \{x, y\}, \{y, x\}, \{y, y\}, \{z, x\}, \{z, y\}\}$
 \item[(f)]   $\wp(B)$ = \{ $\emptyset$, \{$x$\}, \{$y$\}, \{$x, y$\}\}
-\item[(g)]   $\wp(\wp(B))$ = \{ \{ \}, \{ \{ \} \}, \{ \{ $x$ \} \} \}
+\item[(g)]   $\wp(\wp(B))$ = \{ $\emptyset$, \{ $\emptyset$ \}, \{ \{ $x$ \} \}, \{ \{ $y$ \} \}, \{ \{ $x, y$ \} \}, \newline \{ \{ $\emptyset$ \}, \{ $x$ \} \}, \{ \{ $\emptyset$ \}, \{ $y$ \} \}, \{ \{ $\emptyset$ \}, \{ $x, y$ \} \},
+\newline \{ \{ $x$ \}, \{ $y$ \} \}, \{ \{ $x$ \}, \{ $x, y$ \} \}, \{ \{ $y$ \}, \{ $x, y$ \} \}, \newline 
+\{ \{ $\emptyset$ \}, \{ $x$ \} , \{ $y$ \} \}, \{ \{ $\emptyset$ \}, \{ $x$ \} , \{ $x, y$ \} \}, \newline
+\{ \{ $\emptyset$ \}, \{ $y$ \} , \{ $x, y$ \} \}, \{ \{ $x$ \}, \{ $y$ \} , \{ $x, y$ \} \}, \newline
+\{ \{ $\emptyset$ \}, \{ $x$ \} , \{ $y$ \}, \{ $x, y$ \} \} \}
  
 \end{itemize}
 \bigskip
@@ -61,7 +65,7 @@ COSC 417  \\  %class
 \textbf{Problem 3.}
 \begin{itemize}
 \item[(a)] A x B = \{ \{ $1, a$ \}, \{ $1, b$ \}, \{ $2, a$ \}, \{ $2, b$ \}, \{ $3, a$ \}, \{ $3, b$ \} \}
-\item[(b)] $O(n)$
+\item[(b)] 1 element of $\wp(A) x \wp(B) = \{ \{ 1 \}, \{ a \} \}$
 
 \item[(c)] The size of $\wp(A)$ x $\wp(B)$ = $2^3 * 2^2 = 2^5 = 32$
 
