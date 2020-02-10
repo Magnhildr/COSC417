@@ -18,7 +18,7 @@
 \fbox{
 \vbox{
 \begin{flushleft}
-Thomas Adams,  Zachary Kafka, Sujan Tulachan, Krysta Valenzia\\  % authors' names
+Thomas Adams, Zachary Kafka, Sujan Tulachan, Krysta Valenzia\\  % authors' names
 COSC 417  \\  %class
 2/11/2020\\  % date
 \end{flushleft}
@@ -60,7 +60,7 @@ COSC 417  \\  %class
     \item [$->$] Let $a_1$ and $a_2 \in {\mathbb N}$
     \item [$->$] $f(a_1) = f(a_2)$
     \item [$->$] $2(a_1) = 2(a_2) --> a_1 = a_2$
-    \item [$->$] Q.E.D
+    \item [$->$] Q.E.D.
 \end{itemize}
 
 \item [] Surjective (onto) proof: (a function $f: X --> Y$ is surjective if for all y's there is some x so that $f(x) = y$) for $f(x) = 2x$.
@@ -74,6 +74,7 @@ COSC 417  \\  %class
     \item [$->$] $x = y/2$
     \item [$->$] For any $x = y/2 \in {\mathbb N}$
     \item [$->$] $f(x) = f(y/2) = 2(y/2) = y$
+    \item [$->$] Q.E.D.
 \end{itemize}
 
 
