@@ -1,0 +1,401 @@
+
+\documentclass[12pt,letterpaper,final]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\renewcommand\qedsymbol{$\blacksquare$}
+\usepackage{enumerate}
+\usepackage{hyperref}
+
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usetikzlibrary{automata,arrows}
+
+
+\begin{document}
+\fbox{
+\vbox{
+\begin{flushleft}
+Thomas Adams, Zachary Kafka, Sujan Tulachan, Krysta Valenzia\\  % authors' names
+COSC 417  \\  %class
+2/18/2020\\  % date
+\end{flushleft}
+\center{\Large{\textbf{Assignment 2}}}
+%\end{mdframed}
+} % end vbox
+} % end fbox
+
+
+
+
+
+
+\bigskip
+\textbf{Problem 1.}
+
+\bigskip
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2cm]]
+
+  \node[initial, state, accepting] (3) {$q_{3}$};
+  \node[state] (2) [above right of=3] {$q_{2}$};
+  \node[state] (4) [below right of=3] {$q_{4}$};
+  \node[state] (5) [right of=4] {$q_{5}$};
+  \node[state] (1) [right of=2] {$q_{1}$};
+ 
+  
+  \path[->]
+    (3.north) edge [left] node {$u$} (2.west)    
+    (2) edge [right] node {$d$} (3)
+    
+    (3) edge [right] node{$d$} (4)
+    (4.west) edge [left] node {$u$} (3.south)
+    
+    (2) edge [bend left] node[above] {$u$} (1)
+    (1) edge [loop right] node {$u$} (1)
+    (1) edge [bend left] node[below] {$d$} (2)
+    
+    (4) edge [bend left] node[above] {$d$} (5)
+    (5) edge [loop right] node {$d$} (5)
+    (5) edge [bend left] node[below] {$u$} (4)
+       ;  
+\end{tikzpicture}
+\bigskip
+\bigskip
+\newline
+Input: uddu
+\newline
+1. Starts at $q_3$. \newline
+2. Reads u, follows to $q_2$\newline
+3. Reads d, follows to $q_3$\newline
+4. Reads d, follows to $q_4$\newline
+5. Reads u, follows to $q_3$\newline
+\vline
+
+\bigskip
+\bigskip
+\textbf{Problem 2: Part A}
+
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2.8cm]]
+
+  \node[initial, state] (1) {$q_{0}$};
+  \node[state] (2) [below=50] {$q_{sink}$};
+  \node[state] (3) [right of=1] {$q_{1}$};
+  \node[state, accepting] (4) [right of=3] {$q_{2}$};
+
+ 
+  
+  \path[->]
+    (1.south) edge [right] node {$0$} (2.north)    
+    (1) edge [above] node {$1$} (3)
+    (3) edge [loop above] node {$1$}(3)
+    (3) edge [bend left] node[above]{$0$} (4)
+    (4) edge [bend left] node [below] {$1$} (3)
+    
+    (4) edge [loop right] node {$0$} (1)
+    (2) edge [loop right] node {$0, 1$} (2)
+
+       ;  
+\end{tikzpicture}
+
+Input: 10010
+\newline
+1. Starts at $q_0$. \newline
+2. Reads 1, follows to $q_1$\newline
+3. Reads 0, follows to $q_2$\newline
+4. Reads 0, follows to $q_1$\newline
+5. Reads 1, follows to $q_1$\newline
+6. Reads 0, follows to $q_2$\newline
+Machine Accepts Language
+\newline
+
+Input: 110011
+\newline
+1. Starts at $q_0$. \newline
+2. Reads 1, follows to $q_1$\newline
+3. Reads 1, follows to $q_1$\newline
+4. Reads 0, follows to $q_2$\newline
+5. Reads 0, follows to $q_2$\newline
+6. Reads 1, follows to $q_1$\newline
+7. Reads 1, follows to $q_1$\newline
+Machine does not accept it
+\newline
+\newline
+
+Why this machine satisfies the language: If the first input in the string is 0, then the machine rejects it and therefore, gets stuck at a dead end in $q_{sink}$. If the first input is a 1, then the machine is taken to $q_1$. If the following input is a 1, nothing happens; but if the following input is a 0, then the machine travels to the accepting state of $q_2$, where is stays unless a 1 is input after the 0.
+
+\bigskip
+
+\textbf{Problem 2: Part B}
+
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2.8cm]]
+
+  \node[initial, state] (1) {$q_{1}$};
+  \node[state] (2) [below right=50] {$q_{2}$};
+  \node[state, accepting] (3) [right of=1] {$q_{3}$};
+
+  
+  \path[->]
+    (1) edge [left] node{$1$} (2)  
+    (1) edge [above] node {$0$} (3)
+   (3) edge [bend left] node [right] {$0,1$}(2)
+    (2) edge [bend left] node [left] {$0,1$} (3)
+       ;  
+\end{tikzpicture}
+\newline
+Input: 100101
+\newline\newline
+1. Starts at $q_1$. \newline
+2. Reads 1, follows to $q_2$\newline
+3. Reads 0, follows to $q_3$\newline
+4. Reads 0, follows to $q_2$\newline
+5. Reads 1, follows to $q_3$\newline
+6. Reads 0, follows to $q_2$\newline
+7. Reads 1, follows to $q_3$\newline
+Machine accepts it
+\newline
+
+
+
+Input: 11001
+\newline
+1. Starts at $q_1$. \newline
+2. Reads 1, follows to $q_2$\newline
+3. Reads 1, follows to $q_3$\newline
+4. Reads 0, follows to $q_2$\newline
+5. Reads 0, follows to $q_3$\newline
+6. Reads 1, follows to $q_2$\newline
+Machine does not accepts it
+\newline
+
+Why this machine satisfies the language: Upon starting at $q_1$, if the first input is a 0, then the machine travels to the accepting state of $q_3$, as the string begins with 0 and is an odd length (1 character). The addition of another character takes it out of the accepting state, due to the length now being even, and travels to $q_2$. If the first input is 1, then the machine travels to $q_2$. Any other input will send it to the accepting state of $q_3$, because the string will begin with a 1 and the length will be even. For both options of starting input, if an extraneous character is placed after the machine reaches the accepting state, an additional input character will be needed in order to reach the proper length specification to correspond with the selected starting option.
+\newline
+\newline
+\textbf{Problem 2: Part C}
+\newline
+
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2.8cm]]
+
+  \node[initial, state, accepting] (1) {$q_{1}$};
+  \node[state, accepting] (2) [right of=1] {$q_{2}$};
+  \node[state, accepting] (3) [right of=2] {$q_{3}$};
+  \node[state] (4) [right of=3] {$q_{4}$};
+
+ 
+  \path[->]
+    (1) edge [loop above] node {$0$}(1) 
+    (1) edge [bend left] node[above] {$1$} (2)
+    (2) edge [bend left] node [below] {$0$}(1)
+    (2) edge [bend left] node [above]{$1$}(3)
+    (3) edge [loop below] node {$1$}(3)
+    (3) edge [bend left] node [above] {$0$}(4)
+    (4) edge [loop right] node {$0,1$} (4)
+       ;  
+\end{tikzpicture}
+\newline
+\newline
+
+Input: 1001101
+\newline\newline
+1. Starts at $q_1$. \newline
+2. Reads 1, follows to $q_2$\newline
+3. Reads 0, follows to $q_1$\newline
+4. Reads 0, follows to $q_1$\newline
+5. Reads 1, follows to $q_2$\newline
+6. Reads 1, follows to $q_3$\newline
+7. Reads 0, follows to $q_4$\newline
+8. Reads 1, follows to $q_4$\newline
+Machine does not accept it
+\newline
+\newline
+
+Input: 1001
+\newline\newline
+1. Starts at $q_1$. \newline
+2. Reads 1, follows to $q_2$\newline
+3. Reads 0, follows to $q_1$\newline
+4. Reads 0, follows to $q_1$\newline
+5. Reads 1, follows to $q_2$\newline
+Machine does not  accepts it
+\newline\newline
+Why this machine satisfies the language: This machine only has one non-accepting state, where it remains should the substring of 110 be placed within the input string.
+
+\bigskip
+\bigskip
+\textbf{Problem 3: Part A}
+
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2.8cm]]
+
+  \node[initial, state] (1) {$q_{1}$};
+  \node[state] (2) [right of=1] {$q_{2}$};
+  \node[state, accepting] (3) [right of=2] {$q_{3}$};
+
+ 
+  \path[->]
+    (1) edge [loop above] node {$0,1$}(1) 
+    (1) edge [bend left] node[above] {$0$} (2)
+    (2) edge [bend left] node [below] {$1$}(1)
+    (2) edge [bend left] node [above]{$0$}(3)
+    (3) edge [loop above] node {$0$}(3)
+    (3) edge [bend left] node {$1$} (1)
+    ;
+\end{tikzpicture}
+
+\bigskip
+
+Input that is not in language : 001
+\newline
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2.8cm]]
+
+\newline
+\node [initial, state] (2) {$q_1$};
+\node [state] (3) [below left of= 2]{$q_1$};
+\node [state] (4) [below right of= 2]{$q_2$};
+\node [state] (5) [below of= 4]{$q_2$};
+\node [state] (6) [below left of= 3]{$q_1$};
+\node [state] (7) [below right of= 3]{$q_2$};
+\node [state] (8) [below of= 5]{$q_1$};
+\node [state] (9) [below of=6]{$q_1$};
+\node [state] (10) [below of= 7]{$q_1$};
+
+  \path[->]
+   (2) edge [ left] node[above] {0} (3)
+   (2) edge [ left] node[above] {0} (4)
+   (4) edge [above] node {0}(5)
+   (3) edge [ left] node[above] {0} (6)
+   (3) edge [ left] node[above] {0} (7)
+   (5) edge [left] node {1} (8)
+   (6) edge [below] node {1} (9)
+   (7) edge [below] node {1} (10)
+       ;  
+\end{tikzpicture}
+\bigskip\bigskip
+
+Input that is in language : 100
+\bigskip
+\newline
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2.8cm]]
+
+\newline
+\node [initial, state] (1) {$q_1$};
+\node [state] (2) [below of= 1]{$q_1$};
+\node [state] (3) [below left of= 2]{$q_1$};
+\node [state] (4) [below right of= 2]{$q_2$};
+\node [state, accepting] (5) [below of= 4]{$q_3$};
+\node [state] (6) [below left of= 3]{$q_1$};
+\node [state] (7) [below right of= 3]{$q_2$};
+
+  \path[->]
+   (1) edge [left] node{1} (2) 
+   (2) edge [ left] node[above] {0} (3)
+   (2) edge [ left] node[above] {0} (4)
+   (4) edge [above] node {0}(5)
+   (3) edge [ left] node[above] {0} (6)
+   (3) edge [ left] node[above] {0} (7)
+       ;  
+\end{tikzpicture}
+\bigskip
+\bigskip
+
+Why this machine satisfies the language: Regardless of first input, two 0's in a row allows the machine to travel to the accepting state where it will stay so long as the only character input after is a 0. If a 1 is input after two 0's, then the machine will restart.
+
+\bigskip \bigskip
+
+\textbf{Problem 3: Part B}
+
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2.8cm]]
+
+  \node[initial, state] (1) {$q_{1}$};
+  \node[state] (2) [right of=1] {$q_{2}$};
+  \node[state] (3) [right of=2] {$q_{3}$};
+  \node[state] (4) [right of=3] {$q_{4}$};
+  \node[state, accepting] (5) [right of=4] {$q_{5}$};
+
+ 
+  \path[->]
+    (1) edge [loop above] node {$0, 1$}(1) 
+    (1) edge [bend left] node[above] {$0$} (2)
+    (2) edge [loop above] node {$0$}(2)
+    (2) edge [bend left] node [above]{$1$}(3)
+    (3) edge [bend left] node [above] {$0$}(4)
+    (3) edge [bend left] node {$1$} (1)
+    (4) edge [bend left] node {$0$} (2)
+    (4) edge [bend left] node {$1$} (5)
+    (5) edge [loop above] node {$0,1$} (5)
+       ;  
+\end{tikzpicture}
+
+\bigskip \bigskip
+
+Input that is not in language : 10110
+\newline
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2.2cm]]
+
+\newline
+\node [initial, state] (1) {$q_1$};
+\node [state] (2) [below of= 1] {$q_1$};
+\node [state] (3) [below left of= 2]{$q_1$};
+\node [state] (4) [below right of= 2]{$q_2$};
+\node [state] (5) [below of= 3]{$q_2$};
+\node [state] (6) [below of= 4]{$q_3$};
+\node [state] (7) [below of= 5]{$q_3$};
+\node [state] (8) [below of= 6]{$q_1$};
+\node [state] (9) [below of= 7]{$q_4$};
+\node [state] (10) [below left of= 8]{$q_1$};
+\node [state] (11) [below right of= 8]{$q_2$};
+
+  \path[->]
+   (1) edge [ left] node[above] {1} (2)
+   (2) edge [ left] node[above] {0} (3)
+   (2) edge [ left] node[above] {0} (4)
+   (3) edge [ left] node[above] {1} (5)
+   (4) edge [ left] node[above] {1} (6)
+   (5) edge [ left] node[above] {1} (7)
+   (6) edge [ left] node[above] {1} (8)
+   (7) edge [ left] node[above] {0} (9)
+   (8) edge [ left] node[above] {0} (10)
+   (8) edge [ left] node[above] {0} (11)
+       ;  
+\end{tikzpicture}
+\bigskip\bigskip
+
+Input that is in language : 10101
+\bigskip
+\newline
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2.8cm]]
+
+\newline
+\node [initial, state] (1) {$q_1$};
+\node [state] (2) [below of= 1] {$q_1$};
+\node [state] (3) [below left of= 2]{$q_1$};
+\node [state] (4) [below right of= 2]{$q_2$};
+\node [state] (5) [below of= 3]{$q_1$};
+\node [state] (6) [below  of= 4]{$q_3$};
+\node [state] (7) [below left of= 5]{$q_1$};
+\node [state] (8) [below right of= 5]{$q_2$};
+\node [state] (9) [below of= 6]{$q_4$};
+\node [state] (10) [below of= 7]{$q_1$};
+\node [state] (11) [below of= 8]{$q_3$};
+\node [state, accepting] (12) [below of= 9]{$q_5$};
+
+  \path[->]
+   (1) edge [left] node{1} (2) 
+   (2) edge [ left] node[above] {0} (3)
+   (2) edge [ left] node[above] {0} (4)
+   (3) edge [ left] node[above] {1} (5)
+   (4) edge [ left] node[above] {1} (6)
+   (5) edge [ left] node[above] {0} (7)
+   (5) edge [ left] node[above] {0} (8)
+   (6) edge [ left] node[above] {0} (9)
+   (7) edge [ left] node[above] {1} (10)
+   (8) edge [ left] node[above] {1} (11)
+   (9) edge [ left] node[above] {1} (12)
+       ;  
+\end{tikzpicture}
+\bigskip
+\bigskip
+
+Why this machine satisfies the language: At each state, there are checks to ensure that the desired substring is able to complete fully. For instance, at state $q_4$, if the next input is a 0, the substring would not be able to complete, but the machine travels back to state $q_2$ so that another 0 does not need to be inputted for the string to restart.
+
+\end{document}
